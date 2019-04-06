@@ -12,6 +12,7 @@ import {List} from '@ant-design/react-native';
 import {Badge, WhiteSpace} from '@ant-design/react-native';
 import {Grid} from '@ant-design/react-native';
 import { Carousel } from '@ant-design/react-native';
+import { Card,  WingBlank } from '@ant-design/react-native';
 
 const Item = List.Item;
 const GridData = [
@@ -21,25 +22,13 @@ const GridData = [
   }, {
     text: `在线客服`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
-  }, {
-    text: '邀请好友',
-    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
-  }, {
-    text: '每日签到',
-    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
-  }, {
-    text: '考试中心',
-    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
-  }, {
-    text: '推广奖励',
-    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
   }
 ]
 
 type Props = {};
-export default class HomePage extends Component<Props> {
+export default class GamePage extends Component<Props> {
   static navigationOptions = {
-    title: 'Home',
+    title: '游戏大厅',
     headerBackTitle: '返回哈哈' //123
   }
 
@@ -47,46 +36,24 @@ export default class HomePage extends Component<Props> {
     const {navigation} = this.props;
     return (
       <View style={[styles.container, styles.baseText]}>
-        <View style={styles.top}>
-          <View style={[styles.row, styles.borderBtm]}>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>我的金币</Text>
-              <Text style={[styles.textLeft, styles.topSub]}>5.02</Text>
-            </View>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>我的本金</Text>
-              <Text style={[styles.textRight, styles.topSub]}>5.02</Text>
-            </View>
-          </View>
-          <View style={styles.row}>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>今日预估收入：0</Text>
-              <Text style={styles.topTitle}>待完成总收入：0</Text>
-            </View>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>未返本金：0</Text>
-              <Text style={styles.topTitle}>今日奖励：0</Text>
-            </View>
-          </View>
-        </View>
-        <WhiteSpace/>
-        <View style={styles.rowView}>
-          <List>
-            <Item
-              thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
-              extra={
-                <Badge text="new">
 
-                </Badge>
-              }
-              arrow="horizontal"
-            >
-              返款规则调整通知！【重点】
-            </Item>
-          </List>
+        <View style={[styles.rowView,styles.top]}>
+          <Card full>
+
+            <Card.Body>
+              <View style={styles.rowView}>
+                <Grid
+                  data={GridData}
+                  hasLine={false}
+                  columnNum={3}
+                  onPress={(_el, index) => alert(index)}
+                />
+              </View>
+            </Card.Body>
+          </Card>
         </View>
         <WhiteSpace/>
-        <View style={styles.rowView}>
+         <View style={styles.rowView}>
           <Grid
             data={GridData}
             hasLine={false}
@@ -163,8 +130,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#6f30dd',
     display: 'flex',
     justifyContent: 'space-between',
-    paddingRight: 20,
-    paddingLeft: 20,
     paddingBottom: 10
   },
   row: {

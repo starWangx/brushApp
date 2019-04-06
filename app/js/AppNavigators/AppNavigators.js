@@ -2,23 +2,24 @@ import {createStackNavigator} from 'react-navigation'
 import {createBottomTabNavigator,} from 'react-navigation';
 import HomePage from '../page/HomePage/index'
 import LoginPage from '../page/HomePage/index'
+import GamePage from '../page/GamePage/index'
 import DemoPage from '../page/DemoPage/index'
 import React from 'react'
-import {View,Text} from 'react-native'
+import {View, Text} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomeIconWithBadge = (props) => {
   // You should pass down the badgeCount in some other ways like react context api, redux, mobx or event emitters.
-  return <IconWithBadge {...props} badgeCount={3} />;
+  return <IconWithBadge {...props} badgeCount={3}/>;
 };
 
 class IconWithBadge extends React.Component {
   render() {
-    const { name, badgeCount, color, size } = this.props;
+    const {name, badgeCount, color, size} = this.props;
     return (
-      <View style={{ width: 24, height: 24, margin: 5 }}>
-        <Ionicons name={name} size={size} color={color} />
-        { badgeCount > 0 && (
+      <View style={{width: 24, height: 24, margin: 5}}>
+        <Ionicons name={name} size={size} color={color}/>
+        {badgeCount > 0 && (
           <View style={{
             // If you're using react-native < 0.57 overflow outside of the parent
             // will not work on Android, see https://git.io/fhLJ8
@@ -32,7 +33,7 @@ class IconWithBadge extends React.Component {
             justifyContent: 'center',
             alignItems: 'center'
           }}>
-            <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>{badgeCount}</Text>
+            <Text style={{color: 'white', fontSize: 10, fontWeight: 'bold'}}>{badgeCount}</Text>
           </View>
         )}
       </View>
@@ -42,7 +43,10 @@ class IconWithBadge extends React.Component {
 
 export const AppNavigators = createBottomTabNavigator({
   HomePage: {
-    screen: HomePage
+    screen: HomePage,
+    navigationOptions: { //在这里定义每个页面的导航数据，静态配置
+      title: '首页'
+    }
   },
   // LoginPage: {
   //   screen: LoginPage,
@@ -69,10 +73,10 @@ export const AppNavigators = createBottomTabNavigator({
   //     }
   //   }
   // },
-  DemoPage: {
-    screen: DemoPage,
+  GamePage: {
+    screen: GamePage,
     navigationOptions: { //在这里定义每个页面的导航数据，静态配置
-      title: 'this is demoPage'
+      title: '游戏大厅'
     }
   },
   Page4: {
@@ -94,8 +98,8 @@ export const AppNavigators = createBottomTabNavigator({
         // Sometimes we want to add badges to some icons.
         // You can check the implementation below.
         IconComponent = HomeIconWithBadge;
-      } else if (routeName === 'DemoPage') {
-        iconName = `ios-options${focused ? '' : '-outline'}`;
+      } else if (routeName === 'GamePage') {
+        iconName = `logo-game-controller-b`;
       }
 
       // You can return any component that you like here!
