@@ -11,9 +11,9 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {List} from '@ant-design/react-native';
 import {Badge, WhiteSpace} from '@ant-design/react-native';
 import {Grid} from '@ant-design/react-native';
-import {Carousel} from '@ant-design/react-native';
-
+import { Carousel } from '@ant-design/react-native';
 const Item = List.Item;
+const Brief = Item.Brief;
 const GridData = [
   {
     text: `新手指导`,
@@ -36,9 +36,8 @@ const GridData = [
   }
 ]
 
-type
-Props = {};
-export default class HomePage extends Component<Props> {
+type Props = {};
+export default class SettingPage extends Component<Props> {
   static navigationOptions = {
     title: 'Home',
     headerBackTitle: '返回哈哈' //123
@@ -50,77 +49,53 @@ export default class HomePage extends Component<Props> {
       <View style={[styles.container, styles.baseText]}>
         <View style={styles.top}>
           <View style={[styles.row, styles.borderBtm]}>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>我的金币</Text>
-              <Text style={[styles.textLeft, styles.topSub]}>5.02</Text>
+            <View style={styles.imageTextBlock}>
+              <View><Text>图片</Text></View>
+              <Text style={{color:'white'}}>123</Text>
             </View>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>我的本金</Text>
-              <Text style={[styles.textRight, styles.topSub]}>5.02</Text>
-            </View>
-          </View>
-          <View style={styles.row}>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>今日预估收入：0</Text>
-              <Text style={styles.topTitle}>待完成总收入：0</Text>
-            </View>
-            <View style={styles.topBlock}>
-              <Text style={styles.topTitle}>未返本金：0</Text>
-              <Text style={styles.topTitle}>今日奖励：0</Text>
+            <View style={styles.imageTextBlock}>
+              <View><Text>图片</Text></View>
+              <Text style={{color:'white'}}>123</Text>
             </View>
           </View>
+
         </View>
-        <WhiteSpace/>
         <View style={styles.rowView}>
           <List>
             <Item
               thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
-              extra={
-                <Badge text="new">
-
-                </Badge>
-              }
               arrow="horizontal"
+
             >
-              返款规则调整通知！【重点】
+              153167691823<Brief>人气云ID:46160</Brief>
             </Item>
           </List>
         </View>
         <WhiteSpace/>
         <View style={styles.rowView}>
-          <Grid
-            data={GridData}
-            hasLine={false}
-            columnNum={3}
-            onPress={(_el, index) => alert(index)}
-          />
+          <Item  arrow="horizontal" onPress={() => {}}>
+            实名认证
+          </Item>
+          <Item  arrow="horizontal" onPress={() => {}}>
+            我的银行卡
+          </Item>
+          <Item  arrow="horizontal" onPress={() => {}}>
+            买号管理
+          </Item>
         </View>
+        <WhiteSpace/>
 
         <View style={styles.rowView}>
-          <Carousel
-            style={styles.wrapper}
-            selectedIndex={2}
-            autoplay
-            infinite
-            afterChange={this.onHorizontalSelectedIndexChange}
-          >
-            <View
-              style={[styles.containerHorizontal, {backgroundColor: 'red'}]}
-            >
-              <Image
-                style={styles.iconImage}
-                source={require('../../../assert/timg.jpeg')}
-              />
-            </View>
-            <View
-              style={[styles.containerHorizontal, {backgroundColor: 'blue'}]}
-            >
-              <Image
-                style={styles.iconImage}
-                source={require('../../../assert/2.jpeg')}
-              />
-            </View>
-          </Carousel>
+          <Item  arrow="horizontal" onPress={() => {}}>
+            新消息通知
+          </Item>
+        </View>
+        <WhiteSpace/>
+
+        <View style={styles.rowView}>
+          <Item extra="1.3.0" arrow="horizontal" onPress={() => {}}>
+            关于人气云
+          </Item>
         </View>
 
         {/*<Button
@@ -172,7 +147,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingRight: 20,
     paddingLeft: 20,
-    paddingBottom: 10
   },
   row: {
     display: 'flex',
@@ -180,7 +154,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingBottom: 10,
     marginTop: 10,
-    justifyContent: 'space-between'
+    justifyContent: 'center'
   },
   topSub: {
     marginTop: 10,
@@ -215,8 +189,9 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-  iconImage: {
-    maxWidth: '100%',
-    height: 200
+  imageTextBlock:{
+    width:'50%',
+    display:'flex',
+    alignItems:'center'
   }
 });

@@ -12,31 +12,46 @@ import {List} from '@ant-design/react-native';
 import {Badge, WhiteSpace} from '@ant-design/react-native';
 import {Grid} from '@ant-design/react-native';
 import { Carousel } from '@ant-design/react-native';
-import { Card,  Button } from '@ant-design/react-native';
+import { Card,  WingBlank } from '@ant-design/react-native';
 
 const Item = List.Item;
 const GridData1 = [
   {
-    text: `常规游戏`,
+    text: `未完成`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
   }, {
-    text: `活动有意`,
+    text: `已完成`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
-  },
+  },{
+    text: `已取消`,
+    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
+  },{
+    text: `申诉中`,
+    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
+  }
 ]
 
 const GridData2 = [
   {
-    text: `幼稚游戏`,
+    text: `未完成`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
   }, {
-    text: `特别游戏`,
+    text: `已完成`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
-  },
+  },{
+    text: `未追评`,
+    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
+  },{
+    text: `已取消`,
+    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
+  },{
+    text: `申诉中`,
+    icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
+  }
 ]
 
 type Props = {};
-export default class GamePage extends Component<Props> {
+export default class MyGamePage extends Component<Props> {
   static navigationOptions = {
     title: '游戏大厅',
     headerBackTitle: '返回哈哈' //123
@@ -52,7 +67,7 @@ export default class GamePage extends Component<Props> {
             <Card.Header
               title={<View style={{height:30,display:'flex',flexDirection:'row',alignItems:'center'}}>
                 <View style={{width:3,height:15,backgroundColor:'#7e00e5',marginRight:5}}/>
-                <Text>人气游戏</Text>
+                <Text>已接浏览任务</Text>
               </View>}
               thumbStyle={{ width: 30, height: 30, backgroundColor:'red' }}
               //thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
@@ -76,7 +91,7 @@ export default class GamePage extends Component<Props> {
             <Card.Header
               title={<View style={{height:30,display:'flex',flexDirection:'row',alignItems:'center'}}>
                 <View style={{width:3,height:15,backgroundColor:'#7e00e5',marginRight:5}}/>
-                <Text>高佣金游戏</Text>
+                <Text>已接垫付任务</Text>
               </View>}
               thumbStyle={{ width: 30, height: 30, backgroundColor:'red' }}
               //thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
@@ -93,20 +108,6 @@ export default class GamePage extends Component<Props> {
               </View>
             </Card.Body>
           </Card>
-        </View>
-
-        <View style={[styles.rowView,{
-          alignItems:'center'
-        }]}>
-          <Button type="primary" size='large' style={{width:110,marginRight:'auto',marginLeft:'auto',marginTop:30}} >
-            自动接单
-          </Button>
-          <WhiteSpace/>
-          <WhiteSpace/>
-          <WhiteSpace/>
-          <Text style={{color:'#b8b7bc'}}>
-            自动接单已开放
-          </Text>
         </View>
 
 

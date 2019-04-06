@@ -4,6 +4,8 @@ import HomePage from '../page/HomePage/index'
 import LoginPage from '../page/HomePage/index'
 import GamePage from '../page/GamePage/index'
 import DemoPage from '../page/DemoPage/index'
+import MyGamePage from '../page/MyGamePage/index'
+import SettingPage from '../page/SettingPage/index'
 import React from 'react'
 import {View, Text} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -79,10 +81,16 @@ export const AppNavigators = createBottomTabNavigator({
       title: '游戏大厅'
     }
   },
-  Page4: {
-    screen: DemoPage,
+  MyGamePage: {
+    screen: MyGamePage,
     navigationOptions: { //在这里定义每个页面的导航数据，静态配置
-      title: 'this is Page4'
+      title: '我的游戏'
+    }
+  },
+  SettingPage: {
+    screen: SettingPage,
+    navigationOptions: { //在这里定义每个页面的导航数据，静态配置
+      title: '设置'
     }
   }
 }, {
@@ -100,6 +108,10 @@ export const AppNavigators = createBottomTabNavigator({
         IconComponent = HomeIconWithBadge;
       } else if (routeName === 'GamePage') {
         iconName = `logo-game-controller-b`;
+      } else if (routeName === 'MyGamePage') {
+        iconName = `ios-contact`;
+      } else if (routeName === 'SettingPage') {
+        iconName = `ios-settings`;
       }
 
       // You can return any component that you like here!
