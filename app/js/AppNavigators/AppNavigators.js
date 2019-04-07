@@ -1,13 +1,16 @@
-import {createStackNavigator} from 'react-navigation'
-import {createBottomTabNavigator,} from 'react-navigation';
-import HomePage from '../page/HomePage/index'
-import LoginPage from '../page/HomePage/index'
-import GamePage from '../page/GamePage/index'
+import {createBottomTabNavigator,createStackNavigator} from 'react-navigation';
+import HomePage from '../page/Home/index'
+import LoginPage from '../page/Home/index'
+import GamePage from '../page/Game/index'
 import DemoPage from '../page/DemoPage/index'
-import MyGamePage from '../page/MyGamePage/index'
-import SettingPage from '../page/SettingPage/index'
+import MyGamePage from '../page/MyGame/index'
+import SettingPage from '../page/Setting/index'
+import InvitePage from '../page/Invite/index'
+import InviteDetailPage from '../page/Invite/inviteDetail'
+import rewardDetailPage from '../page/Invite/rewardDetail'
+import examPage from '../page/Exam/index'
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text,Platform,Button} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomeIconWithBadge = (props) => {
@@ -43,13 +46,62 @@ class IconWithBadge extends React.Component {
   }
 }
 
-export const AppNavigators = createBottomTabNavigator({
-  HomePage: {
+
+
+
+const HomeStack = createStackNavigator({
+  HomePage : {
     screen: HomePage,
     navigationOptions: { //在这里定义每个页面的导航数据，静态配置
-      title: '首页'
+      title: '首页',
+      header: null
     }
   },
+  Invite: {
+    screen: InvitePage,
+  },
+  InviteDetailPage:{
+    screen: InviteDetailPage,
+    navigationOptions: { //在这里定义每个页面的导航数据，静态配置
+      title: '邀请明细'
+    }
+  },
+  rewardDetailPage:{
+    screen: rewardDetailPage,
+    navigationOptions: { //在这里定义每个页面的导航数据，静态配置
+      title: '奖励明细'
+    }
+  },
+  examPage:{
+    screen: examPage,
+    navigationOptions: { //在这里定义每个页面的导航数据，静态配置
+      title: '考试中心'
+    }
+  }
+},{
+  headerMode:Platform.OS === 'ios'?'float':'screen',
+  mode:Platform.OS === 'ios'?'modal':'card',
+  navigationOptions:{
+    title:'首页',
+    headerTintColor:'#ffffff',
+    headerTitleStyle:{
+      fontWeight:'normal',
+    },
+    headerStyle:{
+      backgroundColor:'#6699ff',
+    },
+  },
+});
+
+HomeStack.navigationOptions = ({ navigation }) => {
+  return {
+    tabBarVisible: navigation.state.index === 0,
+  };
+};
+
+
+export const AppNavigators = createBottomTabNavigator({
+  HomePage:HomeStack,
   // LoginPage: {
   //   screen: LoginPage,
   //   navigationOptions: ({navigation}) => ({ //动态配置
@@ -92,17 +144,19 @@ export const AppNavigators = createBottomTabNavigator({
     navigationOptions: { //在这里定义每个页面的导航数据，静态配置
       title: '设置'
     }
-  }
+  },
+
 }, {
   defaultNavigationOptions: ({navigation}) => ({
     tabBarIcon: ({focused, horizontal, tintColor}) => {
       const {routeName} = navigation.state;
       console.log(navigation);
       let IconComponent = Ionicons;
-      console.log(Ionicons);
+      console.log(routeName);
       let iconName;
       if (routeName === 'HomePage') {
         iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+
         // Sometimes we want to add badges to some icons.
         // You can check the implementation below.
         IconComponent = HomeIconWithBadge;

@@ -39,7 +39,7 @@ type Props = {};
 export default class GamePage extends Component<Props> {
   static navigationOptions = {
     title: '游戏大厅',
-    headerBackTitle: '返回哈哈' //123
+    headerBackTitle: '返回' //123
   }
 
   render() {
@@ -88,6 +88,19 @@ export default class GamePage extends Component<Props> {
                   data={GridData2}
                   hasLine={false}
                   columnNum={3}
+                  renderItem={(el,index)=>{
+                    console.log(el);
+                    return <Badge text={109} overflowCount={100}>
+                      <View
+                        style={{
+                          width: 52,
+                          height: 52,
+                          backgroundColor: 'rgba(255, 140, 101, 0.15)',
+                        }}
+                      />
+                    </Badge>
+
+                  }}
                   onPress={(_el, index) => alert(index)}
                 />
               </View>
