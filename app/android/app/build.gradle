@@ -108,6 +108,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+          release {
+                  storeFile file("/Users/wangxin/WebstormProjects/brushApp/app/android/app/my-release-key.keystore")//这里换成你自己的
+                  storePassword "269596"//这里换成你自己的
+                  keyAlias "my-key-alias"//这里换成你自己的
+                  keyPassword "269596"//这里换成你自己的
+              }
+        }
     splits {
         abi {
             reset()
@@ -138,6 +146,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-image-picker')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])

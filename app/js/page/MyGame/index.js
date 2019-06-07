@@ -79,7 +79,12 @@ export default class MyGamePage extends Component<Props> {
                   data={GridData1}
                   hasLine={false}
                   columnNum={3}
-                  onPress={(_el, index) => alert(index)}
+                  onPress={(_el, index) => {
+                    if(index===0){
+                      // alert(1)
+                      navigation.navigate('unFinishTask',{name:'动态的'})
+                    }
+                  }}
                 />
               </View>
             </Card.Body>
@@ -109,27 +114,6 @@ export default class MyGamePage extends Component<Props> {
             </Card.Body>
           </Card>
         </View>
-
-
-        {/*<Button
-          title={'跳转到页面4'}
-          onPress={()=>{
-            navigation.navigate('Page4')
-          }}
-        />
-        <Button
-          title={'page1'}
-          onPress={()=>{
-            navigation.navigate('Page1',{name:'动态的'})
-          }}
-        />
-        <Text>13</Text>
-        <Button
-          title={'page3'}
-          onPress={()=>{
-            navigation.navigate('Page1',{name:'动态的'})
-          }}
-        />*/}
       </View>
     );
   }

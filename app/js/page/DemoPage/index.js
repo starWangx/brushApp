@@ -13,8 +13,6 @@ import { StyleSheet, Text, View} from 'react-native';
 
 type Props = {};
 export default class DemoPage extends Component<Props> {
-
-
   render() {
     const {navigation} = this.props;
     const {state,setParams}=navigation;
@@ -25,11 +23,6 @@ export default class DemoPage extends Component<Props> {
         <Text style={styles.welcome}>DemoPage</Text>
       </View>
     );
-
-
-
-
-
   }
 }
 

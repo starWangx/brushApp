@@ -20,14 +20,14 @@ const GridData1 = [
     text: `常规游戏`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
   }, {
-    text: `活动有意`,
+    text: `活动游戏`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
   },
 ]
 
 const GridData2 = [
   {
-    text: `幼稚游戏`,
+    text: `优质游戏`,
     icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
   }, {
     text: `特别游戏`,
@@ -64,7 +64,11 @@ export default class GamePage extends Component<Props> {
                   data={GridData1}
                   hasLine={false}
                   columnNum={3}
-                  onPress={(_el, index) => alert(index)}
+                  onPress={(_el, index) => {
+                    if (index === 0) {
+                      navigation.navigate('GameList')
+                    }
+                  }}
                 />
               </View>
             </Card.Body>
@@ -85,23 +89,14 @@ export default class GamePage extends Component<Props> {
             <Card.Body>
               <View style={styles.rowView}>
                 <Grid
-                  data={GridData2}
-                  hasLine={false}
-                  columnNum={3}
-                  renderItem={(el,index)=>{
-                    console.log(el);
-                    return <Badge text={109} overflowCount={100}>
-                      <View
-                        style={{
-                          width: 52,
-                          height: 52,
-                          backgroundColor: 'rgba(255, 140, 101, 0.15)',
-                        }}
-                      />
-                    </Badge>
-
-                  }}
-                  onPress={(_el, index) => alert(index)}
+                    data={GridData1}
+                    hasLine={false}
+                    columnNum={3}
+                    onPress={(_el, index) => {
+                      if (index === 0) {
+                        navigation.navigate('GameList')
+                      }
+                    }}
                 />
               </View>
             </Card.Body>

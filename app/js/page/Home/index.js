@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {AsyncStorage, Image, StyleSheet, Text, View} from 'react-native';
 import {List} from '@ant-design/react-native';
 import {Badge, WhiteSpace} from '@ant-design/react-native';
 import {Grid} from '@ant-design/react-native';
@@ -42,6 +42,16 @@ export default class HomePage extends Component<Props> {
   static navigationOptions = {
     title: 'Home',
     headerBackTitle: '返回' //123
+  }
+  componentDidMount() {
+    AsyncStorage.getItem('passworad',(error,result)=>{
+      if (!error) {
+        console.log(result);
+      }
+      if(!result){
+
+      }
+    })
   }
 
   render() {
@@ -127,26 +137,6 @@ export default class HomePage extends Component<Props> {
             </View>
           </Carousel>
         </View>
-
-        {/*<Button
-          title={'跳转到页面4'}
-          onPress={()=>{
-            navigation.navigate('Page4')
-          }}
-        />
-        <Button
-          title={'page1'}
-          onPress={()=>{
-            navigation.navigate('Page1',{name:'动态的'})
-          }}
-        />
-        <Text>13</Text>
-        <Button
-          title={'page3'}
-          onPress={()=>{
-            navigation.navigate('Page1',{name:'动态的'})
-          }}
-        />*/}
       </View>
     );
   }
